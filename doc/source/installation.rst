@@ -32,12 +32,45 @@ Installing via Conda
 The easiest way to install wrf-python is using 
 `Conda <http://conda.pydata.org/docs/>`_::
 
-    $ conda install -c conda-forge wrf-python
+    conda install -c conda-forge wrf-python
     
-While some bugs are currently being ironed out with the conda-forge 
-installation, wrf-python is also available at::
+.. note::
 
-    $ conda install -c bladwig wrf-python
+   If you use conda to install wrf-python on a supercomputer like 
+   Yellowstone or Cheyenne, we recommend that you do not load any python 
+   related modules via the 'module load' command. The packages installed 
+   by the 'module load' system will not play nicely with packages installed 
+   via conda.
+   
+   Further, some systems will install python packages to a ~/.local directory, 
+   which will be found by the miniconda python interpreter and cause various 
+   import problems.  If you have a ~/.local directory, we strongly suggest 
+   renaming it (mv ~/.local ~/.local_backup).
+    
+
+Installing on Yellowstone
+----------------------------
+
+On Yellowstone, wrf-python can also be installed using the module load system, 
+if this is preferred over using conda.
+
+Unfortunately, because wrf-python requires newer dependencies, it is not 
+available using the 'all-python-libs' module, so many of the dependencies 
+need to be manually installed (most are for xarray).
+
+To install::
+
+    module load python/2.7.7
+    module load numpy/1.11.0
+    module load scipy/0.17.1
+    module load bottleneck/1.1.0
+    module load numexpr/2.6.0
+    module load pyside/1.1.2
+    module load matplotlib/1.5.1
+    module load pandas/0.18.1
+    module load netcdf4python/1.2.4
+    module load xarray/0.8.2
+    module load wrf-python/1.0.1
 
 
 Installing via Source Code
